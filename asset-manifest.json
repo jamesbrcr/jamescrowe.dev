@@ -1,15 +1,23 @@
 {
   "files": {
-    "main.css": "/jamescrowe.dev/static/css/main.f0905bc7.css",
-    "main.js": "/jamescrowe.dev/static/js/main.5ca54876.js",
-    "static/js/488.fb3558c6.chunk.js": "/jamescrowe.dev/static/js/488.fb3558c6.chunk.js",
+    "main.css": "/jamescrowe.dev/static/css/main.40b64dc2.css",
+    "main.js": "/jamescrowe.dev/static/js/main.7e7639e1.js",
+    "static/js/488.4ef79b13.chunk.js": "/jamescrowe.dev/static/js/488.4ef79b13.chunk.js",
+    "static/media/James_Crowe_Logo_3.png": "/jamescrowe.dev/static/media/James_Crowe_Logo_3.9b3ba0e94a335c39ffd7.png",
+    "static/media/revicons.eot": "/jamescrowe.dev/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/jamescrowe.dev/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/revicons.woff": "/jamescrowe.dev/static/media/revicons.e8746a624ed098489406.woff",
+    "static/media/slick.svg": "/jamescrowe.dev/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/jamescrowe.dev/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/jamescrowe.dev/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/jamescrowe.dev/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/jamescrowe.dev/index.html",
-    "main.f0905bc7.css.map": "/jamescrowe.dev/static/css/main.f0905bc7.css.map",
-    "main.5ca54876.js.map": "/jamescrowe.dev/static/js/main.5ca54876.js.map",
-    "488.fb3558c6.chunk.js.map": "/jamescrowe.dev/static/js/488.fb3558c6.chunk.js.map"
+    "main.40b64dc2.css.map": "/jamescrowe.dev/static/css/main.40b64dc2.css.map",
+    "main.7e7639e1.js.map": "/jamescrowe.dev/static/js/main.7e7639e1.js.map",
+    "488.4ef79b13.chunk.js.map": "/jamescrowe.dev/static/js/488.4ef79b13.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f0905bc7.css",
-    "static/js/main.5ca54876.js"
+    "static/css/main.40b64dc2.css",
+    "static/js/main.7e7639e1.js"
   ]
 }
