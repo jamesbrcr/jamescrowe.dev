@@ -11,7 +11,7 @@ interface SocialButtonProps {
 export default function Contact() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-gradient-to-br from-[#191919] to-[#242365]">
-      <h1 className="text-6xl font-bold mb-8 text-white">Let's Work Together!</h1>
+      <h1 className="text-6xl font-bold mb-8 text-white">Let&apos;s Work Together!</h1>
       <div className="mb-8 text-center">
         <a
           href="mailto:crowe@cs.wisc.edu"
