@@ -1,12 +1,12 @@
-//import Image from 'next/image';
-//import pragmaticprogrammerImage from './../../images/The-Pragmatic-Programmer.jpg';
+import Image from 'next/image';
+import pragmaticprogrammerImage from './../../images/The-Pragmatic-Programmer.jpg';
 
 const readingList = [
   {
     id: 1,
     title: "The Pragmatic Programmer",
     type: "Book",
-    //image: pragmaticprogrammerImage,
+    image: pragmaticprogrammerImage,
     thoughts: "A classic that has stood the test of time. It's filled with practical advice from software development to work environment etiquette.",
     link: "https://www.pragmaticprogrammer.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition",
   },
@@ -38,13 +38,13 @@ export default function Reads() {
         <h2 className="text-2xl font-semibold mb-4 text-white">Currently Reading</h2>
         <div className="flex bg-[rgba(128,128,128,0.2)] rounded-lg shadow-md overflow-hidden">
           <div className="w-1/5 flex-shrink-0">
-            {/* <Image
+            <Image
               src={currentlyReading.image}
               alt={currentlyReading.title}
               width={100}
               height={100}
               className="w-full h-full object-cover"
-            /> */}
+            />
           </div>
           <div className="w-4/5 p-4">
             <h2 className="text-lg font-semibold mb-1 underline">{currentlyReading.title}</h2>
@@ -64,7 +64,7 @@ export default function Reads() {
       <div className="max-w-3xl w-full">
         {otherBooks.map((item) => (
           <div key={item.id} className="flex bg-[rgba(128,128,128,0.2)] rounded-lg shadow-md overflow-hidden mb-4">
-            {/* <div className="w-1/5 flex-shrink-0">
+            <div className="w-1/5 flex-shrink-0">
               <Image
                 src={item.image}
                 alt={item.title}
@@ -72,7 +72,7 @@ export default function Reads() {
                 height={100}
                 className="w-full h-full object-cover"
               />
-            </div> */}
+            </div>
             <div className="w-4/5 p-4">
               <h2 className="text-lg font-semibold mb-1">{item.title}</h2>
               <p className="text-sm text-gray-200 mb-1">{item.type}</p>

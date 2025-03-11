@@ -1,5 +1,5 @@
-//import Image from 'next/image';
-//import presentlyImage from './../../images/presently-pic-1.jpg'
+import Image from 'next/image';
+import presentlyImage from './../../images/presently-pic-1.png'
 
 export default function Projects() {
   const projects = [
@@ -7,7 +7,7 @@ export default function Projects() {
       id: 1,
       title: 'Presently',
       description: 'A fine tuned (gpt-4o-mini) gift recommendation app that helps you find the perfect gift no matter the occasion utilizing Amazon\'s "most purchased" list. Built for MadData25 Hackathon!',
-      //image: presentlyImage,
+      image: presentlyImage,
       link: 'https://github.com/VishnuR121/presently',
     },
     // {
@@ -32,13 +32,13 @@ export default function Projects() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-3xl">
         {projects.map((project) => (
           <div key={project.id} className="bg-[rgba(128,128,128,0.2)] rounded-lg shadow-md overflow-hidden">
-            {/* <Image 
+            <Image 
               src={project.image} 
               alt={project.title} 
               width={200} 
               height={100} 
               className="w-full h-24 object-cover"
-            /> */}
+            />
             <div className="p-4">
               <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
               <p className="text-gray-400">{project.description}</p>
