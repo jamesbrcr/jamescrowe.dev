@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import presentlyImage from './../../images/presently-pic-1.jpg'
+//import Image from 'next/image';
+//import presentlyImage from './../../images/presently-pic-1.jpg'
 
 export default function Projects() {
   const projects = [
@@ -7,7 +7,7 @@ export default function Projects() {
       id: 1,
       title: 'Presently',
       description: 'A fine tuned (gpt-4o-mini) gift recommendation app that helps you find the perfect gift no matter the occasion utilizing Amazon\'s "most purchased" list. Built for MadData25 Hackathon!',
-      image: presentlyImage,
+      //image: presentlyImage,
       link: 'https://github.com/VishnuR121/presently',
     },
     // {

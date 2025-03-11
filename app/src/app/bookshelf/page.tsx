@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import pragmaticprogrammerImage from './../../images/The-Pragmatic-Programmer.jpg';
+//import Image from 'next/image';
+//import pragmaticprogrammerImage from './../../images/The-Pragmatic-Programmer.jpg';
 
 const readingList = [
   {
