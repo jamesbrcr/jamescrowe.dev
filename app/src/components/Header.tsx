@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import logo from './../images/logo-2.png'; // Replace with the path to your logo image
+import logo from './../images/logo-2.png'; 
 
 const Header = () => {
   return (
@@ -9,7 +9,7 @@ const Header = () => {
         <div className="max-w-3xl mx-auto flex items-center justify-between py-6">
           {/* Logo */}
           <Link href="/">
-            <div className="relative w-30 h-30 -mt-11"> {/* Adjust width and height as needed */}
+            <div className="relative w-30 h-30 -mt-11"> 
               <Image
                 src={logo}
                 alt="Logo"
@@ -29,7 +29,7 @@ const Header = () => {
         </div>
       </nav>
       {/* Divider Line */}
-      <div className="-mt-8"> {/* Move the line up */}
+      <div className="-mt-8"> 
         <div className="max-w-3xl mx-auto h-0.5 bg-gray-400 opacity-20"></div>
       </div>
     </header>
