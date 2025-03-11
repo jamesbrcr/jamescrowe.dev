@@ -8,7 +8,7 @@ export default function Home() {
         <div className="flex-1">
           <h1 className="mb-4 text-4xl font-bold">About Me</h1>
           <p className="text-lg mb-6">
-            Hi! I'm James Crowe, a student at{' '}
+            Hi! I&apos;m James Crowe, a student at{' '}
             <a
               href="https://www.wisc.edu"
               target="_blank"
