@@ -64,7 +64,7 @@ export default function Reads() {
       <div className="max-w-3xl w-full">
         {otherBooks.map((item) => (
           <div key={item.id} className="flex bg-[rgba(128,128,128,0.2)] rounded-lg shadow-md overflow-hidden mb-4">
-            <div className="w-1/5 flex-shrink-0">
+            {/* <div className="w-1/5 flex-shrink-0">
               <Image
                 src={item.image}
                 alt={item.title}
@@ -72,7 +72,7 @@ export default function Reads() {
                 height={100}
                 className="w-full h-full object-cover"
               />
-            </div>
+            </div> */}
             <div className="w-4/5 p-4">
               <h2 className="text-lg font-semibold mb-1">{item.title}</h2>
               <p className="text-sm text-gray-200 mb-1">{item.type}</p>

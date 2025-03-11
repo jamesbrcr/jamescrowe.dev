@@ -33,7 +33,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <div className="flex-shrink-0">
+        {/* <div className="flex-shrink-0">
           <Image
             src={jamesCroweImage}
             alt="[James Crowe]"
@@ -41,7 +41,7 @@ export default function Home() {
             height={300}
             className="rounded"
           />
-        </div>
+        </div> */}
       </div>
     </main>
   );
