@@ -15,7 +15,7 @@ export default function Contact() {
       <div className="mb-8 text-center">
         <a
           href="mailto:crowe@cs.wisc.edu"
-          className="text-2xl text-gray-300 hover:text-gray-100"
+          className="text-2xl text-gray-200 hover:text-white"
         >
           crowe@cs.wisc.edu
         </a>

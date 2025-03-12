@@ -47,7 +47,7 @@ export default function Reads() {
             />
           </div>
           <div className="w-4/5 p-4">
-            <h2 className="text-lg font-semibold mb-1 underline">{currentlyReading.title}</h2>
+            <h2 className="text-lg font-semibold text-gray-200 mb-1 underline">{currentlyReading.title}</h2>
             <p className="text-sm text-gray-400 mb-1 italic">{currentlyReading.type}</p>
             <p className="text-gray-400">{currentlyReading.thoughts}</p>
             <p className="text-sm text-gray-400 mt-2">
@@ -74,8 +74,8 @@ export default function Reads() {
               />
             </div>
             <div className="w-4/5 p-4">
-              <h2 className="text-lg font-semibold mb-1">{item.title}</h2>
-              <p className="text-sm text-gray-200 mb-1">{item.type}</p>
+              <h2 className="text-lg font-semibold text-gray-200 mb-1">{item.title}</h2>
+              <p className="text-sm text-gray-400 mb-1">{item.type}</p>
               <p className="text-gray-400">{item.thoughts}</p>
             </div>
           </div>

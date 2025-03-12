@@ -19,9 +19,9 @@ const Header = () => {
             </div>
           </Link>
           {/* Navigation Links */}
-          <div className="flex space-x-4 text-xl">
+          <div className="flex space-x-4 text-xl text-gray-200">
             {['Projects', 'Bookshelf', 'Contact'].map((item) => (
-              <Link key={item} href={`/${item.toLowerCase()}`} className="hover:text-gray-300">
+              <Link key={item} href={`/${item.toLowerCase()}`} className="hover:text-gray-400">
                 {item}
               </Link>
             ))}

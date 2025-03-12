@@ -40,7 +40,7 @@ export default function Projects() {
               className="w-full h-24 object-cover"
             />
             <div className="p-4">
-              <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
+              <h3 className="text-lg text-gray-200 font-semibold mb-2">{project.title}</h3>
               <p className="text-gray-400">{project.description}</p>
               <a href={project.link} className="mt-4 inline-block text-blue-500 hover:underline">
                 Repo

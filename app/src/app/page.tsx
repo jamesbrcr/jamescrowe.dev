@@ -6,8 +6,8 @@ export default function Home() {
     <main className="flex min-h-screen items-center justify-center p-24 pt-32 bg-gradient-to-br from-[#191919] to-[#242365]">
       <div className="flex max-w-3xl items-center space-x-8">
         <div className="flex-1">
-          <h1 className="mb-4 text-4xl font-bold">About Me</h1>
-          <p className="text-lg mb-6">
+          <h1 className="mb-4 text-4xl font-bold text-white">About Me</h1>
+          <p className="text-lg mb-6 text-gray-200">
             Hi! I&apos;m James Crowe, a student at{' '}
             <a
               href="https://www.wisc.edu"
@@ -19,7 +19,7 @@ export default function Home() {
             </a>{' '}
             studying Computer Science and Data Science.
           </p>
-          <p className="text-lg mb-6">
+          <p className="text-lg mb-6 text-gray-200">
           I enjoy working with LLMs and mixed reality applications. I am eager to apply my skills in these exciting fields.
           </p>
           <div className="flex justify-center">
