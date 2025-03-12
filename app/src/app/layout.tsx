@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react"
 //import { Geist, Geist_Mono } from "next/font/google";
 import { Domine } from 'next/font/google'; // Import Domine
 import "./globals.css";
@@ -47,6 +48,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer /> 
+        <Analytics />
       </body>
     </html>
   );
