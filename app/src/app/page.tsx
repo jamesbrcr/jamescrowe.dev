@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import jamesCroweImage from '../images/james-crowe-1.jpg';
+import jamesCroweImage from '../images/james-crowe-1.png';
 
 export default function Home() {
   return (

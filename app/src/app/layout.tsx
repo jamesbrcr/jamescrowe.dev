@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Domine } from 'next/font/google'; // Import Domine
 import "./globals.css";
 import Header from '../components/Header';
-import Footer from '../components/Footer'; // Import the Footer component
+import Footer from '../components/Footer'; 
 
 // Configure Geist fonts
 // const geistSans = Geist({
@@ -16,11 +16,10 @@ import Footer from '../components/Footer'; // Import the Footer component
 //   subsets: ["latin"],
 // });
 
-// Configure Domine
 const domine = Domine({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'], // Specify the weights you need
-  variable: '--font-domine', // Define a CSS variable for the font
+  weight: ['400', '500', '600', '700'], 
+  variable: '--font-domine', 
 });
 
 export const metadata: Metadata = {
@@ -36,7 +35,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Add the Domine font link */}
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&display=swap"
@@ -44,10 +42,10 @@ export default function RootLayout({
       </head>
       <body className={`${domine.variable} font-sans min-h-screen flex flex-col`}> {/* Use flex layout */}
         <Header />
-        <main className="flex-1"> {/* Main content takes up remaining space */}
+        <main className="flex-1"> 
           {children}
         </main>
-        <Footer /> {/* Footer stays at the bottom */}
+        <Footer /> 
       </body>
     </html>
   );

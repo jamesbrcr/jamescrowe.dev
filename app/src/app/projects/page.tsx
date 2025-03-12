@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import presentlyImage from './../../images/presently-pic-1.jpg'
+import presentlyImage from './../../images/presently-pic-1.png'
 
 export default function Projects() {
   const projects = [
