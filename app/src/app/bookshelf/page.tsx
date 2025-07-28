@@ -1,86 +1,158 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import pragmaticprogrammerImage from './../../images/The-Pragmatic-Programmer.png';
 
 const readingList = [
   {
     id: 1,
-    title: "The Pragmatic Programmer",
-    type: "Book",
+    title: 'The Pragmatic Programmer',
+    type: 'Book',
     image: pragmaticprogrammerImage,
-    thoughts: "A classic that has stood the test of time. It's filled with practical advice from software development to work environment etiquette.",
-    link: "https://www.pragmaticprogrammer.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition",
+    thoughts:
+      "A classic that has stood the test of time. It's filled with practical advice from software development to work environment etiquette.",
+    link: 'https://www.pragmaticprogrammer.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition',
   },
-//   {
-//     id: 2,
-//     title: "Clean Code: A Handbook of Agile Software Craftsmanship",
-//     type: "Book",
-//     image: "/images/clean-code.jpg",
-//     thoughts: "This book changed how I approach writing code. It's all about creating readable, maintainable software.",
-//   },
-//   {
-//     id: 3,
-//     title: "The Impact of Artificial Intelligence on Innovation",
-//     type: "Research Paper",
-//     image: "/images/ai-innovation.jpg",
-//     thoughts: "An insightful paper that explores how AI is reshaping various industries. It opened my eyes to new possibilities in tech.",
-//   },
 ];
 
 export default function Reads() {
-  const currentlyReading = readingList[0]; // Assuming the first book is the one currently being read
-  const otherBooks = readingList.slice(1); // The rest of the books
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    const dots = Array.from({ length: 120 }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+    }));
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < dots.length; i++) {
+        const p = dots[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = '#ff1a1a';
+        ctx.fill();
+
+        for (let j = i + 1; j < dots.length; j++) {
+          const q = dots[j];
+          const dx = p.x - q.x;
+          const dy = p.y - q.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 150) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            const opacity = Math.max(0.1, 1 - dist / 150);
+            ctx.strokeStyle = `rgba(255, 26, 26, ${opacity})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+
+    const handleResize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const currentlyReading = readingList[0];
+  const otherBooks = readingList.slice(1);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start p-24 pt-32 bg-gradient-to-br from-[#191919] to-[#242365]">
-      
-      {/* Currently Reading Section */}
-      <div className="max-w-3xl w-full mb-8">
-        <h2 className="text-2xl font-semibold mb-4 text-white">Currently Reading</h2>
-        <div className="flex bg-[rgba(128,128,128,0.2)] rounded-lg shadow-md overflow-hidden">
-          <div className="w-1/5 flex-shrink-0">
+    <div className="relative w-full min-h-screen overflow-hidden bg-black">
+      <canvas
+        ref={canvasRef}
+        className="absolute top-0 left-0 w-full h-full z-0"
+      />
+      <main className="relative z-10 flex min-h-screen flex-col items-center justify-start p-6 pt-32 text-white">
+        <h1 className="text-4xl font-bold mb-10 text-red-500">My Bookshelf</h1>
+
+        {/* Currently Reading */}
+        <div className="bg-[#1e1e1e] p-6 rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.6)] w-full max-w-3xl mb-12">
+          <h2 className="text-xl font-semibold text-red-400 mb-4">Currently Reading</h2>
+          <div className="flex gap-6 items-start">
             <Image
               src={currentlyReading.image}
               alt={currentlyReading.title}
               width={100}
-              height={100}
-              className="w-full h-full object-cover"
+              height={140}
+              className="rounded-md object-cover"
             />
-          </div>
-          <div className="w-4/5 p-4">
-            <h2 className="text-lg font-semibold text-gray-200 mb-1 underline">{currentlyReading.title}</h2>
-            <p className="text-sm text-gray-400 mb-1 italic">{currentlyReading.type}</p>
-            <p className="text-gray-400">{currentlyReading.thoughts}</p>
-            <p className="text-sm text-gray-400 mt-2">
-              <a href={currentlyReading.link} className="text-blue-500 hover:underline">
+            <div>
+              <h3 className="text-lg font-semibold text-white underline mb-1">
+                {currentlyReading.title}
+              </h3>
+              <p className="text-sm text-gray-400 italic mb-1">
+                {currentlyReading.type}
+              </p>
+              <p className="text-gray-300 text-sm mb-2">
+                {currentlyReading.thoughts}
+              </p>
+              <a
+                href={currentlyReading.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-red-400 hover:text-red-300"
+              >
                 Read More
               </a>
-            </p>
+            </div>
           </div>
         </div>
-        <div className="max-w-3xl mx-auto h-0.5 bg-gray-400 opacity-20 mt-8"></div>
-      </div>
 
-      {/* Rest of the Reading List */}
-      <div className="max-w-3xl w-full">
-        {otherBooks.map((item) => (
-          <div key={item.id} className="flex bg-[rgba(128,128,128,0.2)] rounded-lg shadow-md overflow-hidden mb-4">
-            <div className="w-1/5 flex-shrink-0">
-              <Image
-                src={item.image}
-                alt={item.title}
-                width={100}
-                height={100}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="w-4/5 p-4">
-              <h2 className="text-lg font-semibold text-gray-200 mb-1">{item.title}</h2>
-              <p className="text-sm text-gray-400 mb-1">{item.type}</p>
-              <p className="text-gray-400">{item.thoughts}</p>
-            </div>
+        {/* Other Books */}
+        {otherBooks.length > 0 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-4xl">
+            {otherBooks.map((item) => (
+              <div
+                key={item.id}
+                className="bg-[#1e1e1e] p-4 rounded-xl shadow-md flex flex-col"
+              >
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={100}
+                  height={140}
+                  className="rounded object-cover mb-3"
+                />
+                <h3 className="text-lg font-semibold text-white mb-1">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-gray-400 italic mb-1">{item.type}</p>
+                <p className="text-sm text-gray-300 mb-2">{item.thoughts}</p>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </main>
+        )}
+      </main>
+    </div>
   );
 }
