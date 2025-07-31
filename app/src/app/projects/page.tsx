@@ -77,7 +77,7 @@ export default function Projects() {
       id: 1,
       title: 'Presently',
       description:
-        'A fine-tuned (gpt-4o-mini) gift recommendation app that helps you find the perfect gift using Amazon\'s "most purchased" list. Built for MadData25 Hackathon!',
+        'A fine-tuned (gpt-4o-mini) gift recommendation app that helps you find the perfect gift using Amazons most purchased list. Built for MadData25 Hackathon!',
       image: presentlyImage,
       link: 'https://github.com/VishnuR121/presently',
     },
