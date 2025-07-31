@@ -3,7 +3,7 @@
     "builds": [
       {
         "src": "app/**", 
-        "use": "@vercel/static" 
+        "use": "@vercel/next" 
       }
     ],
     "routes": [
