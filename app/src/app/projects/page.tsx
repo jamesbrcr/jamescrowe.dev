@@ -6,7 +6,7 @@ import presentlyImage from './../../images/presently-pic-1.png';
 import RLnnImage from './../../images/RLnnImage-pic-1.png';
 
 export default function Projects() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;

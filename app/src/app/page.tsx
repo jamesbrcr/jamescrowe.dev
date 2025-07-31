@@ -5,7 +5,7 @@ import Image from 'next/image';
 import jamesCroweImage from '../images/james-crowe-1.png';
 
 export default function Home() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;

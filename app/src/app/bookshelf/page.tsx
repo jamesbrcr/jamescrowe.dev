@@ -17,7 +17,7 @@ const readingList = [
 ];
 
 export default function Reads() {
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
