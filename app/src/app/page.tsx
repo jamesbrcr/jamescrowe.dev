@@ -26,6 +26,7 @@ export default function Home() {
     }));
 
     function draw() {
+      if (!ctx) return;
       ctx.clearRect(0, 0, width, height);
       for (let i = 0; i < dots.length; i++) {
         const p = dots[i];
