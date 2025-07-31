@@ -85,7 +85,7 @@ export default function Projects() {
       id: 2,
       title: 'Rogue Lineage Race Detection NN',
       description:
-        'A 2-layer neural network that can accurately detect the race of a player character in the "HIT" mmorpg Rogue Lineage.',
+        'A 2-layer neural network that can accurately detect the race of a player character in the HIT mmorpg Rogue Lineage.',
       image: RLnnImage,
       link: 'https://github.com/jamesbrcr/neural-network',
     },
