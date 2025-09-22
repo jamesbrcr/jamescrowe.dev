@@ -1,10 +1,10 @@
 "use client";
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
-import { motion, AnimatePresence } from "framer-motion";
-import { Github, Linkedin, Mail, ChevronRight, ArrowDown, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
+import { Github, Linkedin, Mail, ArrowDown, ExternalLink } from "lucide-react";
 import { Bird } from "lucide-react";
-import { Button } from "@/components/ui/button";
+//import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import JamesPic from "@/images/James4.jpg";
@@ -104,7 +104,7 @@ export default function CroweHome() {
               <div className="text-sm tracking-widest uppercase text-[var(--subtext)] mb-3">Get Ready to Take-off</div>
               <h1 className="text-4xl md:text-6xl font-semibold leading-tight">
                 Hello!
-                <span className="block text-[var(--subtext)]">I'm James Crowe.</span>
+                <span className="block text-[var(--subtext)]">I&apos;m James Crowe.</span>
               </h1>
               <p className="mt-5 text-[var(--subtext)] max-w-prose">
                 Computer Science + Data Science student at the University of Wisconsin-Madison. I ship models, tools, and small games.
