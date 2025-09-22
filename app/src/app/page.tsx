@@ -1,9 +1,11 @@
 "use client";
 import React, { useEffect, useMemo, useRef } from "react";
+import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Mail, ChevronRight, ArrowDown, ExternalLink } from "lucide-react";
 import { Bird } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import Image from "next/image";
 import JamesPic from "@/images/James4.jpg";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -19,87 +21,9 @@ const colors = {
   border: "#23232a",
 };
 
-// Simple crow silhouette SVG
-<div className="absolute inset-0 flex items-center justify-center">
-  <div className="relative w-[88%] h-[88%] rounded-full overflow-hidden">
-      <Image
-      src={JamesPic}
-      alt="James Crowe portrait"
-      fill
-      sizes="(min-width: 768px) 420px, 360px"
-      placeholder="blur"            // static imports include blur data automatically
-      priority
-      className="object-cover"
-    />
-  </div>
-</div>
+const FeatherParticles = dynamic(() => import("@/components/FeatherParticles"), { ssr: false });
 
-// Feather particle component
-const FeatherParticles: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const feathers = useMemo(() => Array.from({ length: 22 }, (_, i) => i), []);
-
-  return (
-    <div ref={containerRef} className="pointer-events-none absolute inset-0 overflow-hidden">
-      {feathers.map((i) => {
-        const delay = Math.random() * 8;
-        const duration = 14 + Math.random() * 12;
-        const startX = Math.random() * 100; // vw
-        const size = 6 + Math.random() * 14; // px
-        return (
-          <motion.div
-            key={i}
-            initial={{ y: -100, x: `${startX}vw`, opacity: 0 }}
-            animate={{ y: "110vh", opacity: [0, 0.6, 0.2, 0], x: [`${startX}vw`, `${startX + (Math.random() * 20 - 10)}vw`] }}
-            transition={{ duration, delay, repeat: Infinity, ease: "easeOut" }}
-            className="absolute"
-          >
-            <div
-              className="rotate-12"
-              style={{
-                width: size,
-                height: size * 3,
-                borderRadius: size,
-                background: `linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02))`,
-                boxShadow: `0 0 12px rgba(255,255,255,0.06)`,
-                filter: "blur(0.2px)",
-              }}
-            />
-          </motion.div>
-        );
-      })}
-    </div>
-  );
-};
-
-// Magnetic button effect (subtle)
-const Magnetic: React.FC<React.ComponentProps<typeof motion.div>> = ({ children, ...props }) => {
-  const ref = useRef<HTMLDivElement | null>(null);
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-    const handle = (e: MouseEvent) => {
-      const rect = node.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      node.style.transform = `translate(${x * 0.04}px, ${y * 0.04}px)`;
-    };
-    const reset = () => (node.style.transform = "translate(0,0)");
-    node.addEventListener("mousemove", handle);
-    node.addEventListener("mouseleave", reset);
-    return () => {
-      node.removeEventListener("mousemove", handle);
-      node.removeEventListener("mouseleave", reset);
-    };
-  }, []);
-  return (
-    <motion.div ref={ref} {...props}>
-      {children}
-    </motion.div>
-  );
-};
-
-// Mock project data
+// project data
 const projects = [
   {
     title: "Rogue Lineage Neural Net",
@@ -108,8 +32,8 @@ const projects = [
   },
   {
     title: "Gift Recommender (Hackathon)",
-    desc: "AI-powered suggestions using Amazon purchase data; web app shipped in 24 hours.",
-    link: "#",
+    desc: "AI-powered suggestions using Amazon purchase data; web app developed in 24 hours.",
+    link: "https://github.com/VishnuR121/presently",
   },
 ];
 
@@ -164,8 +88,8 @@ export default function CroweHome() {
             <a href="#contact" className="hover:text-[var(--text)] transition">Contact</a>
           </nav>
           <div className="flex items-center gap-2">
-            <a href="#" aria-label="GitHub" className="p-2 rounded hover:bg-white/5"><Github size={18} /></a>
-            <a href="#" aria-label="LinkedIn" className="p-2 rounded hover:bg-white/5"><Linkedin size={18} /></a>
+            <a href="https://github.com/jamesbrcr" aria-label="GitHub" className="p-2 rounded hover:bg-white/5"><Github size={18} /></a>
+            <a href="https://www.linkedin.com/in/james-b-crowe/" aria-label="LinkedIn" className="p-2 rounded hover:bg-white/5"><Linkedin size={18} /></a>
             <a href="#contact" aria-label="Email" className="p-2 rounded hover:bg-white/5"><Mail size={18} /></a>
           </div>
         </div>
@@ -232,7 +156,7 @@ export default function CroweHome() {
               <dl className="grid grid-cols-2 gap-4 text-sm">
                 <div>
                   <dt className="text-[var(--subtext)]">Focus</dt>
-                  <dd className="text-[var(--text)] mt-1">AI/ML, Systems, Finance</dd>
+                  <dd className="text-[var(--text)] mt-1">AI/ML, Game development, Software development</dd>
                 </div>
                 <div>
                   <dt className="text-[var(--subtext)]">Tools</dt>
@@ -262,7 +186,7 @@ export default function CroweHome() {
                 </CardHeader>
                 <CardContent>
                   <a href={p.link} className="inline-flex items-center gap-1 text-sm text-[var(--text)] hover:underline">
-                    Read case study <ExternalLink size={16} />
+                    Visit Repository <ExternalLink size={16} />
                   </a>
                 </CardContent>
               </Card>
@@ -273,19 +197,19 @@ export default function CroweHome() {
         {/* Notes / Blog preview */}
         <Section id="blog" title="Personal Blog" eyebrow="Writing">
           <div className="grid md:grid-cols-3 gap-6">
-            {[1,2,3].map((i) => (
-              <Card key={i} className="bg-[var(--panel)] border-[var(--border)]/60 rounded-2xl">
-                <CardHeader>
-                  <CardTitle className="text-[var(--text)]">Post title {i}</CardTitle>
-                  <CardDescription className="text-[var(--subtext)]">A short description of the post goes here.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <a href="#" className="inline-flex items-center gap-1 text-sm text-[var(--text)] hover:underline">
-                    Read post <ExternalLink size={16} />
-                  </a>
-                </CardContent>
-              </Card>
-            ))}
+            <Card className="bg-[var(--panel)] border-[var(--border)]/60 rounded-2xl">
+              <CardHeader>
+                <CardTitle className="text-[var(--text)]">9-21-25 - Rebuilding my site!</CardTitle>
+                <CardDescription className="text-[var(--subtext)]">
+                  Crow themed website overhaul (stack, design, lessons).
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Link href="/blog/9-21-25" className="inline-flex items-center gap-1 text-sm text-[var(--text)] hover:underline">
+                  Read post <ExternalLink size={16} />
+                </Link>
+              </CardContent>
+            </Card>
           </div>
         </Section>
 
@@ -302,7 +226,10 @@ export default function CroweHome() {
                 </a>
               </div>
             </div>
-            <div className="rounded-2xl border border-[var(--border)]/60 bg-[var(--panel)] p-6">
+            
+            {/* was originally a contact section similar to a newsletter sign up but would prefer to display icon of technical skills*/}
+
+            {/* <div className="rounded-2xl border border-[var(--border)]/60 bg-[var(--panel)] p-6">
               <form onSubmit={(e) => e.preventDefault()} className="grid gap-4">
                 <label className="grid gap-1 text-sm">
                   <span className="text-[var(--subtext)]">Your email</span>
@@ -316,7 +243,8 @@ export default function CroweHome() {
                   <Button type="submit" className="rounded-2xl bg-[var(--accent)] hover:bg-[var(--accent2)] text-white">Send</Button>
                 </div>
               </form>
-            </div>
+            </div> */}
+
           </div>
         </Section>
       </main>
@@ -328,9 +256,16 @@ export default function CroweHome() {
             <span>© {new Date().getFullYear()} James Crowe</span>
           </div>
           <div className="flex items-center gap-4">
-            <a href="#" className="hover:text-[var(--text)]">Resume</a>
-            <a href="#" className="hover:text-[var(--text)]">GitHub</a>
-            <a href="#" className="hover:text-[var(--text)]">LinkedIn</a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[var(--text)]"
+            >
+              Resume
+            </a>
+            <a href="https://github.com/jamesbrcr" className="hover:text-[var(--text)]">GitHub</a>
+            <a href="https://www.linkedin.com/in/james-b-crowe/" className="hover:text-[var(--text)]">LinkedIn</a>
           </div>
         </div>
       </footer>

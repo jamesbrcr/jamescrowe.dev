@@ -49,7 +49,7 @@ return <div className={cn2("p-6 pt-4", className)} {...props} />;
 }
 
 
-// (Optional) You can add CardFooter later if needed:
+// can add CardFooter later if needed:
 // export function CardFooter({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
 // return <div className={cn2("p-6 pt-0", className)} {...props} />;
 // }
