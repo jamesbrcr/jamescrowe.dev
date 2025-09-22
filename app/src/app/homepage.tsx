@@ -2,10 +2,7 @@
 import React, { useEffect, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Mail, ChevronRight, ArrowDown, ExternalLink } from "lucide-react";
-import { Bird } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import JamesPic from "@/images/James4.jpg";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 // --- Theme tokens ---
@@ -20,19 +17,11 @@ const colors = {
 };
 
 // Simple crow silhouette SVG
-<div className="absolute inset-0 flex items-center justify-center">
-  <div className="relative w-[88%] h-[88%] rounded-full overflow-hidden">
-      <Image
-      src={JamesPic}
-      alt="James Crowe portrait"
-      fill
-      sizes="(min-width: 768px) 420px, 360px"
-      placeholder="blur"            // static imports include blur data automatically
-      priority
-      className="object-cover"
-    />
-  </div>
-</div>
+const CrowSVG = ({ className = "w-64 h-64" }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 512 512" fill="currentColor" aria-hidden>
+    <path d="M470 240c-26 10-56-4-67-29-12-25-6-52 12-70-40-9-87 6-115 39-8 10-15 21-20 33-4-1-8-2-12-2-31 0-59 21-68 50-5 2-9 4-13 7-20 14-32 36-33 60-13-9-24-21-31-36-2-5-7-8-12-8-39 0-72-27-81-65-1-5-6-8-11-7-8 2-14 10-13 18 8 60 59 105 120 105 3 0 6 1 8 3 26 27 62 43 101 43 74 0 136-53 148-124 1-4 5-7 9-7 15 0 28-6 37-16 6-6 0-16-8-14z" />
+  </svg>
+);
 
 // Feather particle component
 const FeatherParticles: React.FC = () => {
@@ -111,6 +100,11 @@ const projects = [
     desc: "AI-powered suggestions using Amazon purchase data; web app shipped in 24 hours.",
     link: "#",
   },
+  {
+    title: "Equity Models",
+    desc: "Multi-year DCF & comps for KO, PEP, TMUS, and more; scenario analysis tooling.",
+    link: "#",
+  },
 ];
 
 // Section wrappers
@@ -153,15 +147,15 @@ export default function CroweHome() {
         <div className="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="text-[var(--text)]/80">
-            <Bird className="w-8 h-8" />
+              <CrowSVG className="w-8 h-8" />
             </div>
             <span className="text-sm md:text-base tracking-wider uppercase text-[var(--text)]/80">James Crowe</span>
           </div>
           <nav className="hidden md:flex items-center gap-6 text-[var(--subtext)]">
-            <a href="#about" className="hover:text-[var(--text)] transition">About</a>
-            <a href="#projects" className="hover:text-[var(--text)] transition">Projects</a>
-            <a href="#blog" className="hover:text-[var(--text)] transition">Blog</a>
-            <a href="#contact" className="hover:text-[var(--text)] transition">Contact</a>
+            <a href="#work" className="hover:text-[var(--text)] transition">Flight</a>
+            <a href="#about" className="hover:text-[var(--text)] transition">Nest</a>
+            <a href="#notes" className="hover:text-[var(--text)] transition">Caws</a>
+            <a href="#contact" className="hover:text-[var(--text)] transition">Flock</a>
           </nav>
           <div className="flex items-center gap-2">
             <a href="#" aria-label="GitHub" className="p-2 rounded hover:bg-white/5"><Github size={18} /></a>
@@ -177,15 +171,20 @@ export default function CroweHome() {
         <div className="mx-auto max-w-6xl px-4 pt-20 pb-28 md:pt-28 md:pb-36">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div>
-              <div className="text-sm tracking-widest uppercase text-[var(--subtext)] mb-3">Get Ready to Take-off</div>
-              <h1 className="text-4xl md:text-6xl font-semibold leading-tight">
-                Hello!
-                <span className="block text-[var(--subtext)]">I'm James Crowe.</span>
+              <div className="text-sm tracking-widest uppercase text-[var(--subtext)] mb-3">Where code takes wing</div>
+              <h1 className="text-4xl md:text-6xl font-semibold leading-[1.05]">
+                Gothic Minimal. <span className="text-[var(--subtext)]">Crow(e) Crafted.</span>
               </h1>
               <p className="mt-5 text-[var(--subtext)] max-w-prose">
-                Computer Science + Data Science student at the University of Wisconsin-Madison. I ship models, tools, and small games.
+                I’m James, a CS + Data Science student blending low-level systems, AI, and finance. This is my
+                corner of the web—dark, clean, and a little bit raven‑esque.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
+                <Magnetic>
+                  <Button className="bg-[var(--text)] text-black hover:bg-white rounded-2xl px-6 py-6 text-sm">
+                    View Projects <ChevronRight className="ml-2 inline" size={16} />
+                  </Button>
+                </Magnetic>
                 <a href="#about" className="inline-flex items-center text-[var(--subtext)] hover:text-[var(--text)]">
                   Learn more <ArrowDown className="ml-2" size={16} />
                 </a>
@@ -196,18 +195,8 @@ export default function CroweHome() {
                 className="relative w-[360px] h-[360px] md:w-[420px] md:h-[420px]">
                 <div className="absolute inset-0 rounded-full bg-[var(--panel)] border border-[var(--border)]/70 shadow-[0_0_120px_rgba(139,92,246,0.08)]" />
                 <div className="absolute -inset-1 rounded-full bg-[radial-gradient(circle_at_60%_40%,rgba(139,92,246,0.12),transparent_60%)]" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative w-[88%] h-[88%] rounded-full overflow-hidden">
-                    <Image
-                      src={JamesPic}
-                      alt="James Crowe portrait"
-                      fill
-                      sizes="(min-width: 768px) 420px, 360px"
-                      priority
-                      className="object-cover"
-                      // placeholder="blur"
-                    />
-                  </div>
+                <div className="absolute inset-0 flex items-center justify-center text-[var(--text)]/90">
+                  <CrowSVG className="w-72 h-72" />
                 </div>
               </motion.div>
             </div>
@@ -216,16 +205,36 @@ export default function CroweHome() {
       </section>
 
       <main id="main">
+        {/* Work */}
+        <Section id="work" title="Selected Flights" eyebrow="Projects">
+          <div className="grid md:grid-cols-3 gap-6">
+            {projects.map((p, idx) => (
+              <Card key={idx} className="bg-[var(--panel)] border-[var(--border)]/60 rounded-2xl overflow-hidden">
+                <CardHeader>
+                  <CardTitle className="text-[var(--text)]">{p.title}</CardTitle>
+                  <CardDescription className="text-[var(--subtext)]">{p.desc}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <a href={p.link} className="inline-flex items-center gap-1 text-sm text-[var(--text)] hover:underline">
+                    Read case study <ExternalLink size={16} />
+                  </a>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </Section>
 
         {/* About */}
-        <Section id="about" title="About" eyebrow="Nest">
+        <Section id="about" title="About the Crowe" eyebrow="Nest">
           <div className="grid md:grid-cols-2 gap-10">
             <div className="text-[var(--subtext)] leading-relaxed">
               <p>
-                Full-stack software developer from Los Angeles, California. I enjoy training models on real‑world data, creating small games, and listening to music!
+                I split my time between systems programming, applied ML, and financial modeling. I enjoy reverse‑engineering
+                binaries (CS 354), training models on messy real‑world data, and translating numbers into stories.
               </p>
               <p className="mt-4">
-                Lately I’ve been building neural networks, creating mobile applications, and reading One Piece!
+                Lately I’ve been building <em>clean, minimal</em> interfaces that feel tactile: micro‑interactions, subtle
+                motion, and a palette inspired by raven feathers.
               </p>
             </div>
             <div className="rounded-2xl border border-[var(--border)]/60 bg-[var(--panel)] p-6">
@@ -251,27 +260,8 @@ export default function CroweHome() {
           </div>
         </Section>
 
-        {/* Work/Projects */}
-        <Section id="projects" title="Projects" eyebrow="Check out my work">
-          <div className="grid md:grid-cols-3 gap-6">
-            {projects.map((p, idx) => (
-              <Card key={idx} className="bg-[var(--panel)] border-[var(--border)]/60 rounded-2xl overflow-hidden">
-                <CardHeader>
-                  <CardTitle className="text-[var(--text)]">{p.title}</CardTitle>
-                  <CardDescription className="text-[var(--subtext)]">{p.desc}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <a href={p.link} className="inline-flex items-center gap-1 text-sm text-[var(--text)] hover:underline">
-                    Read case study <ExternalLink size={16} />
-                  </a>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </Section>
-
         {/* Notes / Blog preview */}
-        <Section id="blog" title="Personal Blog" eyebrow="Writing">
+        <Section id="notes" title="Caws & Notes" eyebrow="Writing">
           <div className="grid md:grid-cols-3 gap-6">
             {[1,2,3].map((i) => (
               <Card key={i} className="bg-[var(--panel)] border-[var(--border)]/60 rounded-2xl">
@@ -290,15 +280,15 @@ export default function CroweHome() {
         </Section>
 
         {/* Contact */}
-        <Section id="contact" title="Contact" eyebrow="join the flock">
+        <Section id="contact" title="Join the Flock" eyebrow="Contact">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div>
               <p className="text-[var(--subtext)] max-w-prose">
-                Have a project or collaboration in mind? I’d love to chat.
+                Have a project, internship, or collaboration in mind? I’d love to chat.
               </p>
               <div className="mt-6">
-                <a href="mailto:crowe@cs.wisc.edu" className="inline-flex items-center rounded-2xl border border-[var(--border)]/60 bg-white/5 px-5 py-3 hover:bg-white/10">
-                  <Mail size={18} className="mr-2" /> Email me!
+                <a href="mailto:jbcrowe@wisc.edu" className="inline-flex items-center rounded-2xl border border-[var(--border)]/60 bg-white/5 px-5 py-3 hover:bg-white/10">
+                  <Mail size={18} className="mr-2" /> Email James
                 </a>
               </div>
             </div>
@@ -324,7 +314,7 @@ export default function CroweHome() {
       <footer className="border-t border-[var(--border)]/60">
         <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-[var(--subtext)] flex flex-col md:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <Bird className="w-8 h-8" />
+            <CrowSVG className="w-5 h-5" />
             <span>© {new Date().getFullYear()} James Crowe</span>
           </div>
           <div className="flex items-center gap-4">
