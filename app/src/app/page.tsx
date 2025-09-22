@@ -21,7 +21,10 @@ const colors = {
   border: "#23232a",
 };
 
-const FeatherParticles = dynamic(() => import("@/components/FeatherParticles"), { ssr: false });
+const FeatherParticles = dynamic(
+  () => import("../components/FeatherParticles"),
+  { ssr: false }
+);
 
 // project data
 const projects = [

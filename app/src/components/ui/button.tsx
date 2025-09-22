@@ -6,10 +6,11 @@ import * as React from "react";
 function cn(...classes: Array<string | undefined | null | false>) {
 return classes.filter(Boolean).join(" ");
 }
-
-
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
-
+  
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    // optional extras you may want later; harmless if unused
+    asChild?: boolean;
+};
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 ({ className, children, ...props }, ref) => {
