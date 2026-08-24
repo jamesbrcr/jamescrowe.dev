@@ -1,39 +1,29 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import logo from './../images/logo-2.png'; 
+// components/Header.tsx
+import Link from "next/link";
+import { Bird, Github, Linkedin, Mail } from "lucide-react";
 
-const Header = () => {
+export default function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent py-3 overflow-visible">
-      <nav className="container mx-auto px-8">
-        <div className="max-w-3xl mx-auto flex items-center justify-between py-6">
-          {/* Logo */}
-          <Link href="/">
-            <div className="relative w-30 h-30 -mt-11"> 
-              <Image
-                src={logo}
-                alt="Logo"
-                fill
-                className="object-contain"
-              />
-            </div>
-          </Link>
-          {/* Navigation Links */}
-          <div className="flex space-x-4 text-xl text-gray-200">
-            {['Projects', 'Bookshelf', 'Contact'].map((item) => (
-              <Link key={item} href={`/${item.toLowerCase()}`} className="hover:text-gray-400">
-                {item}
-              </Link>
-            ))}
+    <header className="sticky top-0 z-40 border-b border-[var(--border)]/60 bg-[var(--bg)]/70 backdrop-blur">
+      <div className="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-3">
+          <div className="text-[var(--text)]/80">
+            <Bird className="w-8 h-8" />
           </div>
+          <span className="text-sm md:text-base tracking-wider uppercase text-[var(--text)]/80">James Crowe</span>
+        </Link>
+        <nav className="hidden md:flex items-center gap-6 text-[var(--subtext)]">
+          <Link href="/about" className="hover:text-[var(--text)] transition">About</Link>
+          <Link href="/projects" className="hover:text-[var(--text)] transition">Projects</Link>
+          <Link href="/blog" className="hover:text-[var(--text)] transition">Blog</Link>
+          <Link href="/contact" className="hover:text-[var(--text)] transition">Contact</Link>
+        </nav>
+        <div className="flex items-center gap-2">
+          <a href="https://github.com/jamesbrcr" aria-label="GitHub" className="p-2 rounded hover:bg-white/5"><Github size={18} /></a>
+          <a href="https://www.linkedin.com/in/james-b-crowe/" aria-label="LinkedIn" className="p-2 rounded hover:bg-white/5"><Linkedin size={18} /></a>
+          <Link href="/contact" aria-label="Email" className="p-2 rounded hover:bg-white/5"><Mail size={18} /></Link>
         </div>
-      </nav>
-      {/* Divider Line */}
-      <div className="-mt-8"> 
-        <div className="max-w-3xl mx-auto h-0.5 bg-gray-400 opacity-20"></div>
       </div>
     </header>
   );
-};
-
-export default Header;
+}
